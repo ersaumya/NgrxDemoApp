@@ -1,18 +1,25 @@
 {
   "customers": [
     {
-      "name": "Soumya Rout",
+      "first name": "Soumya",
       "phone": "9238591744",
       "address": "salipur, cuttack",
-      "membership": "Platinum",
+      "membership": "Basic",
       "id": 1
     },
     {
-      "name": "Mahaprasad Rout",
+      "first name": "Mahaprasad",
       "phone": "8249835007",
-      "address": "bhubaneswar",
+      "address": "bhubaneswar,khorda",
       "membership": "Pro",
       "id": 2
+    },
+    {
+      "first name": "Amiya",
+      "phone": "8249835008",
+      "address": "bangalore,karnataka",
+      "membership": "Platinium",
+      "id": 3
     }
   ]
 }
