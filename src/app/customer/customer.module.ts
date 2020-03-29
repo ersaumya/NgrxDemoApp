@@ -1,6 +1,7 @@
+import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { customerReducer } from "./store";
 import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerAddComponent } from './components/customer-add/customer-add.component';
 import { CustomerEditComponent } from './components/customer-edit/customer-edit.component';
@@ -15,6 +16,10 @@ import { CustomerComponent } from './container/customer/customer.component';
     CustomerListComponent,
     CustomerComponent
   ],
-  imports: [CommonModule, CustomerRoutingModule]
+  imports: [
+    CommonModule,
+    CustomerRoutingModule,
+    StoreModule.forFeature("customers", customerReducer)
+  ]
 })
 export class CustomerModule {}

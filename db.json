@@ -1,21 +1,21 @@
 {
   "customers": [
     {
-      "first name": "Soumya",
+      "name": "Soumya",
       "phone": "9238591744",
       "address": "salipur, cuttack",
       "membership": "Basic",
       "id": 1
     },
     {
-      "first name": "Mahaprasad",
+      "name": "Mahaprasad",
       "phone": "8249835007",
       "address": "bhubaneswar,khorda",
       "membership": "Pro",
       "id": 2
     },
     {
-      "first name": "Amiya",
+      "name": "Amiya",
       "phone": "8249835008",
       "address": "bangalore,karnataka",
       "membership": "Platinium",
