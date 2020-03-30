@@ -1,6 +1,7 @@
 import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { customerReducer } from "./store/reducers/customer.reducer";
 import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerAddComponent } from './components/customer-add/customer-add.component';
@@ -20,6 +21,8 @@ import { CustomerEffect } from './store/effects/customer.effect';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
     CustomerRoutingModule,
     StoreModule.forFeature("customers", customerReducer),
     EffectsModule.forFeature([CustomerEffect])

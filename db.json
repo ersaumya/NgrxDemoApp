@@ -20,6 +20,13 @@
       "address": "bangalore,karnataka",
       "membership": "Platinium",
       "id": 3
+    },
+    {
+      "name": "pankaj",
+      "phone": "8465564654",
+      "address": "goa",
+      "membership": "Pro",
+      "id": 5
     }
   ]
 }
