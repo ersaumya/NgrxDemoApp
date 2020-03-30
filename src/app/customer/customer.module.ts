@@ -7,6 +7,8 @@ import { CustomerAddComponent } from './components/customer-add/customer-add.com
 import { CustomerEditComponent } from './components/customer-edit/customer-edit.component';
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
 import { CustomerComponent } from './container/customer/customer.component';
+import { EffectsModule } from '@ngrx/effects';
+import { CustomerEffect } from './store/effects/customer.effect';
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import { CustomerComponent } from './container/customer/customer.component';
   imports: [
     CommonModule,
     CustomerRoutingModule,
-    StoreModule.forFeature("customers", customerReducer)
+    StoreModule.forFeature("customers", customerReducer),
+    EffectsModule.forFeature([CustomerEffect])
   ]
 })
 export class CustomerModule {}
