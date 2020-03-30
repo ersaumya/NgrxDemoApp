@@ -2,9 +2,10 @@ import * as customerAction from "../actions/customer.action";
 import { Customer } from "../../models/customer.model";
 import * as fromRoot from "../../../state/app-state";
 import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { EntityState, EntityAdapter, createEntityAdapter } from "@ngrx/entity";
 
-export interface CustomerState {
-  customers: Customer[];
+export interface CustomerState extends EntityState<Customer> {
+  selectedCustomerId: number | null;
   loading: boolean;
   loaded: boolean;
   error: string;
@@ -14,12 +15,20 @@ export interface AppState extends fromRoot.AppState {
   customers: CustomerState;
 }
 
-export const initialState: CustomerState = {
-  customers: [],
+export const customerAdapter: EntityAdapter<Customer> = createEntityAdapter<
+  Customer
+>();
+
+export const defaultCustomer: CustomerState = {
+  ids: [],
+  entities: {},
+  selectedCustomerId: null,
   loading: false,
   loaded: false,
   error: ""
 };
+
+export const initialState = customerAdapter.getInitialState(defaultCustomer);
 
 export function customerReducer(
   state = initialState,
@@ -33,20 +42,20 @@ export function customerReducer(
       };
     }
     case customerAction.CustomerActionTypes.LOAD_CUSTOMERS_SUCCESS: {
-      return {
+      // use the adapter to load all the entities in the store
+      return customerAdapter.addAll(action.payload, {
         ...state,
         loading: false,
-        loaded: true,
-        customers: action.payload
-      };
+        loaded: true
+      });
     }
     case customerAction.CustomerActionTypes.LOAD_CUSTOMERS_FAIL: {
       return {
         ...state,
-        customers:[],
+        entities: {},
         loading: false,
         loaded: false,
-        error:action.payload
+        error: action.payload
       };
     }
 
@@ -62,7 +71,7 @@ const getCustomerFeatureState = createFeatureSelector<CustomerState>(
 );
 export const getCustomers = createSelector(
   getCustomerFeatureState,
-  (state: CustomerState) => state.customers
+  customerAdapter.getSelectors().selectAll
 );
 
 export const getCustomersLoading = createSelector(
